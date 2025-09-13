@@ -18,14 +18,12 @@ public struct CloseButton: View {
         } label: {
             if #available(iOS 26.0, *) {
                 Image(systemName: "xmark")
-                    .foregroundStyle(
-                        Color(.secondaryLabel)
-                    )
+                    .foregroundStyle(Color.secondary)
             } else {
                 Image(systemName: "xmark.circle.fill")
                     .foregroundStyle(
-                        Color(.secondaryLabel),
-                        Color(.secondarySystemFill)
+                        Color.secondary,
+                        FillShapeStyle.fill
                     )
                     .font(.title2)
             }
@@ -35,11 +33,13 @@ public struct CloseButton: View {
 
 #Preview {
     NavigationView {
-        CloseButton()
-            .toolbar {
-                ToolbarItem {
-                    CloseButton()
-                }
+        List {
+            CloseButton()
+        }
+        .toolbar {
+            ToolbarItem {
+                CloseButton()
             }
+        }
     }
 }
